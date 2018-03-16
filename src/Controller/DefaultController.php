@@ -16,4 +16,12 @@ class DefaultController extends Controller
             'controller_name' => 'DefaultController',
         ]);
     }
+
+    /**
+     * @Route("/error", name="test_error_page")
+     */
+    public function error()
+    {
+        new \Exception('Just to Test integrations!');
+    }
 }
