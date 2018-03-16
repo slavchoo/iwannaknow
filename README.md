@@ -1,2 +1,2 @@
 # iwannaknow
-Your GitHub routine summary to Slack
+Your GitHub routine summary to Slack.
