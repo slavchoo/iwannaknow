@@ -80,6 +80,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.0"
     },
+    "oxcom/symfony-rollbar-bundle": {
+        "version": "v2.0.5"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -103,6 +106,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "rollbar/rollbar": {
+        "version": "v1.4.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "4.0",
