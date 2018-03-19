@@ -1,0 +1,21 @@
+parameters:
+    # Adds a fallback DATABASE_URL if the env var is not set.
+    # This allows you to run cache:warmup even if your
+    # environment variables are not available yet.
+    # You should not need to change this value.
+    env(GITHUB_CLIENT_ID): ''
+    env(GITHUB_CLIENT_SECRET): ''
+
+knpu_oauth2_client:
+    clients:
+        github:
+            type: github
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: '%env(resolve:GITHUB_CLIENT_ID)%'
+            client_secret: '%env(resolve:GITHUB_CLIENT_SECRET)%'
+            # a route name you'll create
+            redirect_route: connect_github_check
+            redirect_params: {}
+
+            # whether to check OAuth2 "state": defaults to true
+            # use_state: true
