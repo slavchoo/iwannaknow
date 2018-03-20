@@ -9,6 +9,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="index_page")
+     * @Route("/home", name="home_page")
      */
     public function index()
     {

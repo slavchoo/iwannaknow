@@ -8,18 +8,25 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * @Route("/github")
+ * @Route("/connect/github")
  */
 class GithubController extends Controller
 {
     /**
+     * @Route("/", name="connect_github")
+     */
+    public function index()
+    {
+        return $this->get('oauth2.registry')
+            ->getClient('github')
+            ->redirect();
+    }
+
+    /**
      * @Route("/check", name="connect_github_check")
      */
-    public function index(Request $request)
+    public function connectGithub(Request $request): Response
     {
-        $code = $request->query->get('code');
-        $state = $request->query->get('state');
-
-        return new Response();
+        return $this->redirectToRoute('home_page');
     }
 }
