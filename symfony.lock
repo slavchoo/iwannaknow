@@ -74,6 +74,15 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "v1.18.0"
+    },
+    "league/oauth2-client": {
+        "version": "2.3.0"
+    },
+    "league/oauth2-github": {
+        "version": "2.0.0"
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
@@ -82,6 +91,9 @@
     },
     "oxcom/symfony-rollbar-bundle": {
         "version": "v2.0.5"
+    },
+    "paragonie/random_compat": {
+        "version": "v2.0.11"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
