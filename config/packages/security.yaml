@@ -10,7 +10,9 @@ security:
             security: false
         main:
             anonymous: true
-            logout: ~
+            logout:
+                path: /logout
+                target: /
 
             guard:
                 authenticators:
