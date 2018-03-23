@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +17,7 @@ class GithubController extends Controller
     /**
      * @Route("/", name="connect_github")
      */
-    public function index()
+    public function index(): Response
     {
         return $this->get('oauth2.registry')
             ->getClient('github')

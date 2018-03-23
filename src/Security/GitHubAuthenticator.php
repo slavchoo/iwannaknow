@@ -2,9 +2,11 @@
 
 namespace App\Security;
 
+use App\Document\User;
+use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use League\OAuth2\Client\Provider\GithubResourceOwner;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,11 +20,13 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 class GitHubAuthenticator extends SocialAuthenticator
 {
     private $clientRegistry;
+    private $managerRegistry;
     private $router;
 
-    public function __construct(ClientRegistry $clientRegistry, RouterInterface $router)
+    public function __construct(ClientRegistry $clientRegistry, ManagerRegistry $managerRegistry, RouterInterface $router)
     {
         $this->clientRegistry = $clientRegistry;
+        $this->managerRegistry = $managerRegistry;
         $this->router = $router;
     }
 
@@ -46,12 +50,7 @@ class GitHubAuthenticator extends SocialAuthenticator
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        $data = array(
-            // you might translate this message
-            'message' => 'Authentication Required'
-        );
-
-        return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
+        return new RedirectResponse($this->router->generate('index_page'));
     }
 
     /**
@@ -113,7 +112,27 @@ class GitHubAuthenticator extends SocialAuthenticator
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        return $userProvider->loadUserByUsername($this->getGitHubClient()->fetchUserFromToken($credentials)->getId());
+        /** @var GithubResourceOwner $gitHubUser */
+        $gitHubUser = $this->getGitHubClient()->fetchUserFromToken($credentials);
+
+        $existingUser = $this->managerRegistry->getRepository(User::class)
+            ->findOneBy(['gitHubId' => $gitHubUser->getId()]);
+        if ($existingUser) {
+            return $existingUser;
+        }
+
+        $user = new User();
+        $user->setGitHubId($gitHubUser->getId());
+        $user->setUsername($gitHubUser->getNickname());
+        $user->setEmail($gitHubUser->getEmail());
+        $user->setAvatarUrl($gitHubUser->toArray()['avatar_url']);
+        $user->setFullName($gitHubUser->toArray()['name']);
+
+        $dm = $this->managerRegistry->getManager();
+        $dm->persist($user);
+        $dm->flush();
+
+        return $user;
     }
 
     /**
