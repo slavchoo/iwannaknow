@@ -7,9 +7,11 @@
         "ext-mongodb": "^1.2.0",
         "alcaeus/mongo-php-adapter": "^1.1",
         "doctrine/mongodb-odm-bundle": "^3.4",
+        "knplabs/github-api": "^2.8",
         "knpuniversity/oauth2-client-bundle": "^1.18",
         "league/oauth2-github": "^2.0",
         "oxcom/symfony-rollbar-bundle": "^2.0",
+        "php-http/guzzle6-adapter": "^1.1",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "^4.0",
@@ -39,7 +41,8 @@
         "symfony/maker-bundle": "^1.2",
         "symfony/phpunit-bridge": "^4.0",
         "symfony/profiler-pack": "^1.0",
-        "symfony/web-server-bundle": "^4.0"
+        "symfony/web-server-bundle": "^4.0",
+        "phpspec/phpspec": "^4.0"
     },
     "config": {
         "preferred-install": {
@@ -48,7 +51,8 @@
         "sort-packages": true,
         "platform": {
             "ext-mongo": "1.6.16"
-        }
+        },
+        "bin-dir": "bin"
     },
     "autoload": {
         "psr-4": {

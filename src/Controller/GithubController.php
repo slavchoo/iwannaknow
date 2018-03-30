@@ -21,7 +21,7 @@ class GithubController extends Controller
     {
         return $this->get('oauth2.registry')
             ->getClient('github')
-            ->redirect();
+            ->redirect(['repo', 'read:org']);
     }
 
     /**

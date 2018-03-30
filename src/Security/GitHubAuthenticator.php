@@ -7,6 +7,7 @@ use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use League\OAuth2\Client\Provider\GithubResourceOwner;
+use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -115,20 +116,19 @@ class GitHubAuthenticator extends SocialAuthenticator
         /** @var GithubResourceOwner $gitHubUser */
         $gitHubUser = $this->getGitHubClient()->fetchUserFromToken($credentials);
 
+        $dm = $this->managerRegistry->getManager();
         $existingUser = $this->managerRegistry->getRepository(User::class)
             ->findOneBy(['gitHubId' => $gitHubUser->getId()]);
+
         if ($existingUser) {
+            $existingUser->setAccessToken($credentials->getToken());
+            $dm->flush();
+
             return $existingUser;
         }
 
-        $user = new User();
-        $user->setGitHubId($gitHubUser->getId());
-        $user->setUsername($gitHubUser->getNickname());
-        $user->setEmail($gitHubUser->getEmail());
-        $user->setAvatarUrl($gitHubUser->toArray()['avatar_url']);
-        $user->setFullName($gitHubUser->toArray()['name']);
+        $user = $this->createUser($credentials, $gitHubUser);
 
-        $dm = $this->managerRegistry->getManager();
         $dm->persist($user);
         $dm->flush();
 
@@ -177,5 +177,18 @@ class GitHubAuthenticator extends SocialAuthenticator
     private function getGitHubClient()
     {
         return $this->clientRegistry->getClient('github');
+    }
+
+    private function createUser(AccessToken $credentials, GithubResourceOwner $gitHubUser): User
+    {
+        $user = new User();
+        $user->setGitHubId($gitHubUser->getId());
+        $user->setUsername($gitHubUser->getNickname());
+        $user->setEmail($gitHubUser->getEmail());
+        $user->setAvatarUrl($gitHubUser->toArray()['avatar_url']);
+        $user->setFullName($gitHubUser->toArray()['name']);
+        $user->setAccessToken($credentials->getToken());
+
+        return $user;
     }
 }

@@ -43,6 +43,11 @@ class User implements UserInterface
     private $fullName;
 
     /**
+     * @MongoDB\Field(type="string")
+     */
+    private $accessToken;
+
+    /**
      * Returns the roles granted to the user.
      *
      * <code>
@@ -184,5 +189,15 @@ class User implements UserInterface
     public function setFullName($fullName): void
     {
         $this->fullName = $fullName;
+    }
+
+    public function getAccessToken(): ?string
+    {
+        return $this->accessToken;
+    }
+
+    public function setAccessToken(string $accessToken): void
+    {
+        $this->accessToken = $accessToken;
     }
 }
