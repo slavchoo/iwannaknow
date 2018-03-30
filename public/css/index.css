@@ -2,7 +2,7 @@
 .mt-100{margin-top: 100px}
 
 .btn-git{
-  background-image: url("/assets/images/github.svg");
+  /*background-image: url("../images/github.svg");*/
   background-repeat: no-repeat;
   background-size: 20px;
 }
