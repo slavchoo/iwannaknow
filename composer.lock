@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e684584368c8b8b802ac84c6830facf",
+    "content-hash": "a19361433fb0ee2e6c4a65caddf36aae",
     "packages": [
         {
             "name": "alcaeus/mongo-php-adapter",
@@ -565,39 +565,39 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1"
+                "reference": "4c8e363f96427924e7e519c5b5119b4f54512697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
-                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/4c8e363f96427924e7e519c5b5119b4f54512697",
+                "reference": "4c8e363f96427924e7e519c5b5119b4f54512697",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.4.2",
                 "doctrine/inflector": "~1.0",
                 "php": ">=5.3.2",
-                "symfony/doctrine-bridge": "~2.2|~3.0|~4.0"
+                "symfony/doctrine-bridge": "~2.7|~3.3|~4.0"
             },
             "require-dev": {
                 "instaclick/coding-standard": "~1.1",
                 "instaclick/object-calisthenics-sniffs": "dev-master",
                 "instaclick/symfony2-coding-standard": "dev-remaster",
-                "phpunit/phpunit": "~4",
+                "phpunit/phpunit": "~4|~5",
                 "predis/predis": "~0.8",
                 "satooshi/php-coveralls": "^1.0",
                 "squizlabs/php_codesniffer": "~1.5",
-                "symfony/console": "~2.2|~3.0|~4.0",
-                "symfony/finder": "~2.2|~3.0|~4.0",
-                "symfony/framework-bundle": "~2.2|~3.0|~4.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0|~4.0",
-                "symfony/security-acl": "~2.3|~3.0",
-                "symfony/validator": "~2.2|~3.0|~4.0",
-                "symfony/yaml": "~2.2|~3.0|~4.0"
+                "symfony/console": "~2.7|~3.3|~4.0",
+                "symfony/finder": "~2.7|~3.3|~4.0",
+                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
+                "symfony/phpunit-bridge": "~2.7|~3.3|~4.0",
+                "symfony/security-acl": "~2.7|~3.3",
+                "symfony/validator": "~2.7|~3.3|~4.0",
+                "symfony/yaml": "~2.7|~3.3|~4.0"
             },
             "suggest": {
                 "symfony/security-acl": "For using this bundle to cache ACLs"
@@ -649,7 +649,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2017-10-12T17:23:29+00:00"
+            "time": "2018-03-27T09:22:12+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1439,16 +1439,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.0",
+            "version": "6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1458,7 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0 || ^5.0",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -1467,7 +1467,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.2-dev"
+                    "dev-master": "6.3-dev"
                 }
             },
             "autoload": {
@@ -1500,7 +1500,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-06-22T18:50:49+00:00"
+            "time": "2018-03-26T16:33:04+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1914,16 +1914,16 @@
         },
         {
             "name": "mongodb/mongodb",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mongodb/mongo-php-library.git",
-                "reference": "07ffd2438658342b776803323cfaa7c156a6099a"
+                "reference": "7417ecf1ca5aef263d3e2fdc4ace214f7fd1b750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/07ffd2438658342b776803323cfaa7c156a6099a",
-                "reference": "07ffd2438658342b776803323cfaa7c156a6099a",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/7417ecf1ca5aef263d3e2fdc4ace214f7fd1b750",
+                "reference": "7417ecf1ca5aef263d3e2fdc4ace214f7fd1b750",
                 "shasum": ""
             },
             "require": {
@@ -1933,7 +1933,7 @@
                 "php": ">=5.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.36"
+                "phpunit/phpunit": "^4.8.36 || ^6.4"
             },
             "type": "library",
             "extra": {
@@ -1975,7 +1975,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2018-02-08T16:30:23+00:00"
+            "time": "2018-03-19T18:40:25+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2176,25 +2176,25 @@
         },
         {
             "name": "oxcom/symfony-rollbar-bundle",
-            "version": "v2.0.5",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OxCom/symfony3-rollbar-bundle.git",
-                "reference": "936fe1bdee4f4965a9974f3e6515fab13061b8d8"
+                "reference": "13ecc41ed18d9da7504bb7122885fbfc9113d028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OxCom/symfony3-rollbar-bundle/zipball/936fe1bdee4f4965a9974f3e6515fab13061b8d8",
-                "reference": "936fe1bdee4f4965a9974f3e6515fab13061b8d8",
+                "url": "https://api.github.com/repos/OxCom/symfony3-rollbar-bundle/zipball/13ecc41ed18d9da7504bb7122885fbfc9113d028",
+                "reference": "13ecc41ed18d9da7504bb7122885fbfc9113d028",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "^1.23",
                 "php": ">=5.6",
                 "rollbar/rollbar": "^1.3",
-                "symfony/config": "~3.0|~4.0",
-                "symfony/dependency-injection": "~3.0|~4.0",
-                "symfony/http-kernel": "~3.0|~4.0"
+                "symfony/config": "^2.8|~3.0|~4.0",
+                "symfony/dependency-injection": "^2.8|~3.0|~4.0",
+                "symfony/http-kernel": "^2.8|~3.0|~4.0"
             },
             "require-dev": {
                 "doctrine/doctrine-fixtures-bundle": "^2.3",
@@ -2203,7 +2203,7 @@
                 "squizlabs/php_codesniffer": "^3.2",
                 "symfony/phpunit-bridge": "^4.0"
             },
-            "type": "library",
+            "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
                     "SymfonyRollbarBundle\\": "./"
@@ -2222,8 +2222,14 @@
                     "email": "lancer.oxcom@gmail.com"
                 }
             ],
-            "description": "Bundle for Symfony 3 that integrates Rollbar tracker",
-            "time": "2018-01-31T22:36:01+00:00"
+            "description": "Bundle for Symfony that integrates Rollbar tracker",
+            "keywords": [
+                "bundle",
+                "errors",
+                "rollbar",
+                "symfony"
+            ],
+            "time": "2018-03-30T17:40:21+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3765,16 +3771,16 @@
         },
         {
             "name": "symfony/debug-pack",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug-pack.git",
-                "reference": "2da9b0ea7a733fc29ec3e72139751fd8d2582887"
+                "reference": "ae4b15596788f9592f67f8615398671bf3f796e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug-pack/zipball/2da9b0ea7a733fc29ec3e72139751fd8d2582887",
-                "reference": "2da9b0ea7a733fc29ec3e72139751fd8d2582887",
+                "url": "https://api.github.com/repos/symfony/debug-pack/zipball/ae4b15596788f9592f67f8615398671bf3f796e4",
+                "reference": "ae4b15596788f9592f67f8615398671bf3f796e4",
                 "shasum": ""
             },
             "require": {
@@ -3782,7 +3788,6 @@
                 "php": "^7.0",
                 "symfony/debug-bundle": "^3.3|^4.0",
                 "symfony/monolog-bundle": "^3.0",
-                "symfony/phpunit-bridge": "^3.3|^4.0",
                 "symfony/profiler-pack": "^1.0",
                 "symfony/var-dumper": "^3.3|^4.0"
             },
@@ -3792,7 +3797,7 @@
                 "MIT"
             ],
             "description": "A debug pack for Symfony projects",
-            "time": "2017-12-12T01:47:04+00:00"
+            "time": "2018-03-29T13:53:44+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -4157,16 +4162,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.0.76",
+            "version": "v1.0.78",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "202c981673b255a41bac4076cb82629a0b8481cb"
+                "reference": "eead30b31db70691cd1fd1e7225190c818a1a5f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/202c981673b255a41bac4076cb82629a0b8481cb",
-                "reference": "202c981673b255a41bac4076cb82629a0b8481cb",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/eead30b31db70691cd1fd1e7225190c818a1a5f6",
+                "reference": "eead30b31db70691cd1fd1e7225190c818a1a5f6",
                 "shasum": ""
             },
             "require": {
@@ -4199,7 +4204,7 @@
                     "email": "fabien.potencier@gmail.com"
                 }
             ],
-            "time": "2018-03-23T16:30:50+00:00"
+            "time": "2018-03-27T10:04:58+00:00"
         },
         {
             "name": "symfony/form",
@@ -4968,72 +4973,6 @@
             ],
             "description": "A pack for the Doctrine ORM",
             "time": "2017-12-12T01:47:50+00:00"
-        },
-        {
-            "name": "symfony/phpunit-bridge",
-            "version": "v4.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "14ffbbe2a72d0f6339b24eb830dd38cf63ba6630"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/14ffbbe2a72d0f6339b24eb830dd38cf63ba6630",
-                "reference": "14ffbbe2a72d0f6339b24eb830dd38cf63ba6630",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "conflict": {
-                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
-            },
-            "suggest": {
-                "ext-zip": "Zip support is required when using bin/simple-phpunit",
-                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
-            },
-            "bin": [
-                "bin/simple-phpunit"
-            ],
-            "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                },
-                "thanks": {
-                    "name": "phpunit/phpunit",
-                    "url": "https://github.com/sebastianbergmann/phpunit"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Bridge\\PhpUnit\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony PHPUnit Bridge",
-            "homepage": "https://symfony.com",
-            "time": "2018-02-19T16:50:22+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
@@ -7474,6 +7413,72 @@
                 "scaffolding"
             ],
             "time": "2018-03-21T13:40:46+00:00"
+        },
+        {
+            "name": "symfony/phpunit-bridge",
+            "version": "v4.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/phpunit-bridge.git",
+                "reference": "14ffbbe2a72d0f6339b24eb830dd38cf63ba6630"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/14ffbbe2a72d0f6339b24eb830dd38cf63ba6630",
+                "reference": "14ffbbe2a72d0f6339b24eb830dd38cf63ba6630",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
+            },
+            "suggest": {
+                "ext-zip": "Zip support is required when using bin/simple-phpunit",
+                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
+            },
+            "bin": [
+                "bin/simple-phpunit"
+            ],
+            "type": "symfony-bridge",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                },
+                "thanks": {
+                    "name": "phpunit/phpunit",
+                    "url": "https://github.com/sebastianbergmann/phpunit"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Bridge\\PhpUnit\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PHPUnit Bridge",
+            "homepage": "https://symfony.com",
+            "time": "2018-02-19T16:50:22+00:00"
         },
         {
             "name": "symfony/web-server-bundle",
