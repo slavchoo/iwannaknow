@@ -22,3 +22,7 @@
 ###> symfony/web-server-bundle ###
 .web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> symfony/webpack-encore-pack ###
+yarn-error.log
+###< symfony/webpack-encore-pack ###
