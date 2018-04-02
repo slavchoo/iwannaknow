@@ -26,3 +26,8 @@
 ###> symfony/webpack-encore-pack ###
 yarn-error.log
 ###< symfony/webpack-encore-pack ###
+
+###> Docker ###
+/data/
+###< Docker ###
+=======
