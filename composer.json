@@ -80,6 +80,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "compile": [
+            "yarn run build"
         ]
     },
     "conflict": {
