@@ -12,5 +12,22 @@
 }
 
 svg{
-  fill: #26a69a;
+  fill: white;
+}
+
+//header
+
+.brand-logo{
+  margin-left: 15px;
+}
+
+//home
+
+.form-block{
+  .form-block__item{
+    color: #009688;
+  }
+  input:checked + .form-block__item{
+    color: #9e9e9e;
+  }
 }

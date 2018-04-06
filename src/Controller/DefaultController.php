@@ -23,6 +23,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/test", name="test_page")
+     */
+    public function test()
+    {
+        return $this->render('default/test.html.twig', [
+
+        ]);
+    }
+
+    /**
      * @Security("has_role('ROLE_USER')")
      * @Route("/home", name="home_page")
      */
