@@ -6,15 +6,18 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class DashboardController extends Controller
 {
     /**
-     * @Route("/", name="index_page")
+     * @Security("has_role('ROLE_USER')")
+     * @Route("/home", name="home_page")
      */
     public function index(): Response
     {
-        return $this->render('default/index.html.twig', []);
+        return $this->render('dashboard/index.html.twig', [
+        ]);
     }
 }

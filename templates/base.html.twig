@@ -9,10 +9,14 @@
             <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
         {% endblock %}
     </head>
-    <body class="teal darken-2">
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            <script src="{{ asset('build/js/app.js') }}"></script>
-        {% endblock %}
+    <body class="teal lighten-5">
+
+    {% block top_navigation %}{% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('build/js/app.js') }}"></script>
+    {% endblock %}
     </body>
 </html>
