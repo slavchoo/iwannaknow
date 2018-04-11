@@ -11,24 +11,10 @@ RUN apt-get update \
     && apt-get -y install git \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-# Install xdebug
-RUN echo "error_reporting = E_ALL" > /etc/php/7.2/cli/php.ini \
-    && echo "display_startup_errors = On" >> /etc/php/7.2/cli/php.ini \
-    && echo "display_errors = On" >> /etc/php/7.2/cli/php.ini \
-    && echo "xdebug.remote_enable=1" >> /etc/php/7.2/cli/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_connect_back=1" >> /etc/php/7.2/cli/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.idekey=\"PHPSTORM\"" >> /etc/php/7.2/cli/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_port=9000" >> /etc/php/7.2/cli/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_connect_back=0" >> /etc/php/7.2/cli/conf.d/docker-php-ext-xdebug.ini# Install xdebug
-
-RUN echo "error_reporting = E_ALL" > /etc/php/7.2/fpm/php.ini \
-    && echo "display_startup_errors = On" >> /etc/php/7.2/fpm/php.ini \
-    && echo "display_errors = On" >> /etc/php/7.2/fpm/php.ini \
-    && echo "xdebug.remote_enable=1" >> /etc/php/7.2/fpm/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_connect_back=1" >> /etc/php/7.2/fpm/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.idekey=\"PHPSTORM\"" >> /etc/php/7.2/fpm/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_port=9000" >> /etc/php/7.2/fpm/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_connect_back=0" >> /etc/php/7.2/fpm/conf.d/docker-php-ext-xdebug.ini
+#https://medium.com/@pablofmorales/xdebug-with-docker-and-phpstorm-786da0d0fad2
+ENV XDEBUGINI_PATH=/etc/php/7.2/fpm/conf.d/xdebug.ini
+COPY xdebug.ini /etc/php/7.2/fpm/conf.d/xdebug.ini
+RUN echo "xdebug.remote_host="`/sbin/ip route|awk '/default/ { print $3 }'` >> $XDEBUGINI_PATH
 
 # Install yarn
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
