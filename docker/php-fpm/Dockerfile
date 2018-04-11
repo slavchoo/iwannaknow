@@ -13,7 +13,7 @@ RUN apt-get update \
 
 #https://medium.com/@pablofmorales/xdebug-with-docker-and-phpstorm-786da0d0fad2
 ENV XDEBUGINI_PATH=/etc/php/7.2/fpm/conf.d/xdebug.ini
-COPY xdebug.ini /etc/php/7.2/fpm/conf.d/xdebug.ini
+COPY xdebug.ini $XDEBUGINI_PATH
 RUN echo "xdebug.remote_host="`/sbin/ip route|awk '/default/ { print $3 }'` >> $XDEBUGINI_PATH
 
 # Install yarn
