@@ -10,7 +10,10 @@
                     <p>
                         <label>
                             <input type="checkbox" />
-                            <span class="form-block__item">#{{ item.number }} {{ item.title }}</span>
+                            <span class="form-block__item">
+                                #{{ item.number }} {{ item.title }}
+                                <a href="{{ item.html_url }}" target="_blank">Check</a>
+                            </span>
                         </label>
                     </p>
                     {% endfor %}
