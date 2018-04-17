@@ -25,7 +25,7 @@ class ReportProvider
     {
         $this->client->authenticate($this->user->getAccessToken(), null, Client::AUTH_HTTP_TOKEN);
 
-        return $this->getSearchApi()->issues('review-requested:slavchoo is:open');
+        return $this->getSearchApi()->issues(sprintf('review-requested:%s is:open', $this->user->getUsername()));
     }
 
     public function setUser(User $user): void

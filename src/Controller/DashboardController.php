@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Report\ReportProvider;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use DateTime;
 
 class DashboardController extends Controller
 {
@@ -16,8 +18,15 @@ class DashboardController extends Controller
      * @Route("/home", name="home_page")
      * @Template()
      */
-    public function index(): array
+    public function index(ReportProvider $reporter): array
     {
-        return [];
+        $reporter->setUser($this->getUser());
+
+        $report = $reporter->getPullRequestsToReview();
+
+        return [
+            'report' => $report,
+            'reportDate' => new DateTime(),
+        ];
     }
 }

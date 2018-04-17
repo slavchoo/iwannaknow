@@ -31,6 +31,8 @@ class ReportProviderSpec extends ObjectBehavior
         $client->search()->shouldBeCalled()->willReturn($searchApi);
         $searchApi->issues(Argument::type('string'))->willReturn([]);
 
+        $user->getUsername()->shouldBeCalled();
+
         $this->setUser($user);
         $this->getPullRequestsToReview();
     }

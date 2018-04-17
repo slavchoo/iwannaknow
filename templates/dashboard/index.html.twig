@@ -4,38 +4,16 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <p class="teal-text"># April, 5 (last update 10:45)</p>
+                <p class="teal-text"># {{ reportDate|date('M, d') }} (last update {{ reportDate|date("H:i") }})</p>
                 <form class="form-block">
+                    {% for item in report.items %}
                     <p>
                         <label>
                             <input type="checkbox" />
-                            <span class="form-block__item">#2046 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</span>
+                            <span class="form-block__item">#{{ item.number }} {{ item.title }}</span>
                         </label>
                     </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" checked />
-                            <span class="form-block__item">#2046 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span class="form-block__item">#2046 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span class="form-block__item">#2046 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" checked />
-                            <span class="form-block__item">#2046 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</span>
-                        </label>
-                    </p>
+                    {% endfor %}
                 </form>
             </div>
         </div>
