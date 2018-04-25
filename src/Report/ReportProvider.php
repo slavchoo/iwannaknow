@@ -21,6 +21,11 @@ class ReportProvider
         $this->client = $client;
     }
 
+    public function getReport(): iterable
+    {
+        return $this->getPullRequestsToReview();
+    }
+
     public function getPullRequestsToReview(): iterable
     {
         $this->client->authenticate($this->user->getAccessToken(), null, Client::AUTH_HTTP_TOKEN);

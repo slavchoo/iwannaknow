@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Document\User;
+use App\Report\ReportProvider;
+use App\Report\UserReporter;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use Symfony\Component\Console\Command\Command;
@@ -19,10 +21,12 @@ class ReportsGenerateCommand extends Command
     protected static $defaultName = 'app:reports:generate';
 
     private $managerRegistry;
+    private $userReporter;
 
-    public function __construct(ManagerRegistry $managerRegistry)
+    public function __construct(ManagerRegistry $managerRegistry, UserReporter $userReporter)
     {
         $this->managerRegistry = $managerRegistry;
+        $this->userReporter = $userReporter;
 
         parent::__construct();
     }
@@ -50,12 +54,13 @@ class ReportsGenerateCommand extends Command
             }
         }
 
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        $io->success('Done!');
     }
 
     private function generateReportByUser(StyleInterface $io, User $user): void
     {
         $io->text(sprintf('Generating report for user user_id=%d', $user->getId()));
+        $this->userReporter->report($user);
     }
 
     private function getUserRepository(): DocumentRepository

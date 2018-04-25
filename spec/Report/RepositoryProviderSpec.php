@@ -20,7 +20,7 @@ class RepositoryProviderSpec extends ObjectBehavior
         $this->shouldHaveType(RepositoryProvider::class);
     }
 
-    function it_is_rerieve_report_by_user(User $user, Client $client, \Github\Api\User $userApi)
+    function it_is_retrieve_report_by_user(User $user, Client $client, \Github\Api\User $userApi)
     {
         $user->getAccessToken()->willReturn('gh_token');
         $client->authenticate('gh_token', null, Client::AUTH_HTTP_TOKEN)->shouldBeCalled();
