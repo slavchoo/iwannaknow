@@ -21,11 +21,13 @@ class ReportProvider
         $this->client = $client;
     }
 
-    public function getPullRequestsToReview(): iterable
+    public function getPullRequestsToReview(): Report
     {
         $this->client->authenticate($this->user->getAccessToken(), null, Client::AUTH_HTTP_TOKEN);
 
-        return $this->getSearchApi()->issues(sprintf('review-requested:%s is:open', $this->user->getUsername()));
+        $items = $this->getSearchApi()->issues(sprintf('review-requested:%s is:open', $this->user->getUsername()));
+
+        return $this->convertResponse($items);
     }
 
     public function setUser(User $user): void
@@ -36,5 +38,16 @@ class ReportProvider
     private function getSearchApi(): Search
     {
         return $this->client->search();
+    }
+
+    private function convertResponse(iterable $response): Report
+    {
+        $report = new Report();
+
+        foreach ($response['items'] as $item) {
+            $report->addItem($item);
+        }
+
+        return $report;
     }
 }

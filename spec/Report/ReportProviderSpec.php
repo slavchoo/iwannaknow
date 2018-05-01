@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace spec\App\Report;
 
 use App\Document\User;
+use App\Report\Report;
 use App\Report\ReportProvider;
 use Github\Api\Search;
 use Github\Client;
@@ -29,11 +30,11 @@ class ReportProviderSpec extends ObjectBehavior
         $client->authenticate('gh_token', null, Client::AUTH_HTTP_TOKEN)->shouldBeCalled();
 
         $client->search()->shouldBeCalled()->willReturn($searchApi);
-        $searchApi->issues(Argument::type('string'))->willReturn([]);
+        $searchApi->issues(Argument::type('string'))->willReturn(['items' => []]);
 
         $user->getUsername()->shouldBeCalled();
 
         $this->setUser($user);
-        $this->getPullRequestsToReview();
+        $this->getPullRequestsToReview()->shouldReturnAnInstanceOf(Report::class);
     }
 }
