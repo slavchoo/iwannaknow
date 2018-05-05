@@ -19,7 +19,9 @@ class IssueRepository implements AuthAwareInterface
 
     public function findOpenPRsByUsername(string $username): iterable
     {
-        return $this->getSearchApi()->issues(sprintf('review-requested:%s is:open', $username));
+        $response = $this->getSearchApi()->issues(sprintf('review-requested:%s is:open', $username));
+
+        return $response['items'];
     }
 
     private function getSearchApi(): Search

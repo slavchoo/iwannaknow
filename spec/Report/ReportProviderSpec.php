@@ -27,7 +27,7 @@ class ReportProviderSpec extends ObjectBehavior
         $user->getAccessToken()->shouldBeCalled()->willReturn('gh_token');
         $user->getUsername()->shouldBeCalled()->willReturn('gh-username');
         $issueRepository->authinteficate('gh_token')->shouldBeCalled();
-        $issueRepository->findOpenPRsByUsername('gh-username')->shouldBeCalled()->willReturn(['items' => []]);
+        $issueRepository->findOpenPRsByUsername('gh-username')->shouldBeCalled()->willReturn([]);
 
         $this->setUser($user);
         $this->getPullRequestsToReview()->shouldReturnAnInstanceOf(Report::class);
