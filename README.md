@@ -1,6 +1,8 @@
 # iwannaknow
 Your GitHub routine summary to Slack.
 
+## Docker
+
 ### Run project locally
 
 Install docker to your local env. 
@@ -23,6 +25,19 @@ docker rm $(docker ps -aq)
 docker-compose exec php-fpm bash
 ```
 
+## Tools
+
+### Buld assets locally (via Webpach Encore)
+
+```bash 
+docker-compose exec php-fpm bash
+
+# then inside the container
+yarn dev
+```
+
+
+## Heroku
 
 
 ### In order to force yarn work on heroku
