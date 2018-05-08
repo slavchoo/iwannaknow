@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Tests\Command;
 
 use App\Document\User;
+use App\Report\ReportProvider;
+use App\Report\UserReporter;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\ODM\MongoDB\DocumentRepository;
+use Prophecy\Argument;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use App\Command\ReportsGenerateCommand;
@@ -29,7 +32,10 @@ class ReportsGenerateCommandTest extends KernelTestCase
 
         $managerRegistry->getRepository(User::class)->shouldBeCalled()->willReturn($userRepository->reveal());
 
-        $application->add(new ReportsGenerateCommand($managerRegistry->reveal()));
+        $userReporter = $this->prophesize(UserReporter::class);
+        $userReporter->report(Argument::type(User::class))->shouldBeCalled();
+
+        $application->add(new ReportsGenerateCommand($managerRegistry->reveal(), $userReporter->reveal()));
 
         $command = $application->find('app:reports:generate');
         $commandTester = new CommandTester($command);
@@ -57,7 +63,9 @@ class ReportsGenerateCommandTest extends KernelTestCase
 
         $managerRegistry->getRepository(User::class)->shouldBeCalled()->willReturn($userRepository->reveal());
 
-        $application->add(new ReportsGenerateCommand($managerRegistry->reveal()));
+        $userReporter = $this->prophesize(UserReporter::class);
+
+        $application->add(new ReportsGenerateCommand($managerRegistry->reveal(), $userReporter->reveal()));
 
         $command = $application->find('app:reports:generate');
         $commandTester = new CommandTester($command);
