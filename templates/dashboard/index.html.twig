@@ -6,7 +6,7 @@
             <div class="col s12">
                 <p class="teal-text"># {{ reportDate|date('M, d') }} (last update {{ reportDate|date("H:i") }})</p>
                 <form class="form-block">
-                    {% for item in report.items %}
+                    {% for item in report %}
                     <p>
                         <label>
                             <input type="checkbox" />

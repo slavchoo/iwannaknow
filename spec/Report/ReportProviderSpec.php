@@ -5,17 +5,16 @@ declare(strict_types=1);
 namespace spec\App\Report;
 
 use App\Document\User;
+use App\GitHub\Repository\IssueRepository;
+use App\Report\Report;
 use App\Report\ReportProvider;
-use Github\Api\Search;
-use Github\Client;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ReportProviderSpec extends ObjectBehavior
 {
-    function let(Client $client)
+    function let(IssueRepository $issueRepository)
     {
-        $this->beConstructedWith($client);
+        $this->beConstructedWith($issueRepository);
     }
 
     function it_is_initializable()
@@ -23,17 +22,14 @@ class ReportProviderSpec extends ObjectBehavior
         $this->shouldHaveType(ReportProvider::class);
     }
 
-    function it_returns_code_review_request(User $user, Client $client, Search $searchApi)
+    function it_returns_code_review_request(User $user, IssueRepository $issueRepository)
     {
-        $user->getAccessToken()->willReturn('gh_token');
-        $client->authenticate('gh_token', null, Client::AUTH_HTTP_TOKEN)->shouldBeCalled();
-
-        $client->search()->shouldBeCalled()->willReturn($searchApi);
-        $searchApi->issues(Argument::type('string'))->willReturn([]);
-
-        $user->getUsername()->shouldBeCalled();
+        $user->getAccessToken()->shouldBeCalled()->willReturn('gh_token');
+        $user->getUsername()->shouldBeCalled()->willReturn('gh-username');
+        $issueRepository->authinteficate('gh_token')->shouldBeCalled();
+        $issueRepository->findOpenPRsByUsername('gh-username')->shouldBeCalled()->willReturn([]);
 
         $this->setUser($user);
-        $this->getPullRequestsToReview();
+        $this->getPullRequestsToReview()->shouldReturnAnInstanceOf(Report::class);
     }
 }

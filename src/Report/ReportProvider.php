@@ -5,36 +5,33 @@ declare(strict_types=1);
 namespace App\Report;
 
 use App\Document\User;
-use Github\Api\Search;
-use Github\Client;
+use App\GitHub\Repository\IssueRepository;
 
 class ReportProvider
 {
-    /** @var Client */
-    private $client;
-
     /** @var User */
     private $user;
 
-    public function __construct(Client $client)
+    /**
+     * @var IssueRepository
+     */
+    private $issueRepository;
+
+    public function __construct(IssueRepository $issueRepository)
     {
-        $this->client = $client;
+        $this->issueRepository = $issueRepository;
     }
 
-    public function getPullRequestsToReview(): iterable
+    public function getPullRequestsToReview(): Report
     {
-        $this->client->authenticate($this->user->getAccessToken(), null, Client::AUTH_HTTP_TOKEN);
+        $this->issueRepository->authinteficate($this->user->getAccessToken());
+        $items = $this->issueRepository->findOpenPRsByUsername($this->user->getUsername());
 
-        return $this->getSearchApi()->issues(sprintf('review-requested:%s is:open', $this->user->getUsername()));
+        return new Report($items);
     }
 
     public function setUser(User $user): void
     {
         $this->user = $user;
-    }
-
-    private function getSearchApi(): Search
-    {
-        return $this->client->search();
     }
 }
